@@ -45,7 +45,7 @@ Pour mettre à jour la vitesse et la position, on calcule en premier lieu l'acc�
 $$
 \left\lbrace
 \begin{array}{lcl}
-\vec{f}_{i}(t) & = & m_{i}.\vec{a}_{i}(t) \\[2mm]
+\vec{f}_{i}(t) & = & m_{i}.\vec{a}_{i}(t) \\
 \vec{f}_{i}(t) & = & \displaystyle \sum_{j\neq i} \mathcal{G}\frac{m_{i}m_{j}}{\|\vec{p}_{j}(t)-\vec{p}_{i}(t)\|^{3}}(\vec{p}_{j}(t)-\vec{p}_{i}(t))
 \end{array}
 \right.
@@ -61,7 +61,7 @@ Puis on met à jour la position et la vitesse :
 $$
 \left\lbrace
 \begin{array}{lcl}
-\vec{v}_{i}(t+\delta_{t}) & = & \vec{v}_{i}(t) + \delta t \vec{a}_{i}(t) \\[2mm]
+\vec{v}_{i}(t+\delta_{t}) & = & \vec{v}_{i}(t) + \delta t \vec{a}_{i}(t) \\
 \vec{p}_{i}(t+\delta_{t}) & = & \vec{p}_{i}(t)+\delta t \vec{v}_{i}(t) + \frac{1}{2}(\delta t)^{2}\vec{a}_{i}(t)
 \end{array}
 \right.
