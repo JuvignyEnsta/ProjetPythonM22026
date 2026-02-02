@@ -33,7 +33,7 @@ class Visualizer3D:
     
     Attributes:
         points (np.ndarray): Tableau (N, 3) des coordonnées xyz des points
-        colors (np.ndarray): Tableau (N, 3) des couleurs RGB (valeurs 0-1)
+        colors (np.ndarray): Tableau (N, 3) des couleurs RGB (valeurs 0-255)
         luminosities (np.ndarray): Tableau (N,) des luminosités (valeurs 0-1)
         bounds (tuple): ((xmin, xmax), (ymin, ymax), (zmin, zmax))
     """
