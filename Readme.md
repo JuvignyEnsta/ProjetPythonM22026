@@ -70,7 +70,7 @@ $$
 ### Première version : programmation naïve
 
 Dans un premier temps, on va simuler la galaxie par une approche objet. On va donc créer :
-  - Une classe ```Corps``` dont chaque instance contiendra la masse, la couleur et la position d'un corps, une méthode qui met à jour la position et la vitesse par rapport à une accélération et un pas de temps $\delta t$, une méthode calculant la distance entre le corps et un autre corps (on suppose que les corps sont réduits à un point);
+  - Une classe ```Corps``` dont chaque instance contiendra la masse, la couleur, la vitesse et la position d'un corps, une méthode qui met à jour la position et la vitesse par rapport à une accélération et un pas de temps $\delta t$, une méthode calculant la distance entre le corps et un autre corps (on suppose que les corps sont réduits à un point);
   
   - Une classe ```NCorps``` qui contiendra une collection de corps. On pourra calculer la force d'attraction du corps appelant la méthode par les autres corps contenus dans ```NCorps```.
 
