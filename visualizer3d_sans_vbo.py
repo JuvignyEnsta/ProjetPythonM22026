@@ -409,7 +409,7 @@ def demo():
     points[:, 2] = r * np.cos(phi)
     
     # Génération de couleurs aléatoires
-    colors = np.random.uniform(0.2, 1.0, (n_points, 3)).astype(np.float32)
+    colors = np.random.uniform(50, 255, (n_points, 3)).astype(np.int32)
     
     # Génération de luminosités aléatoires
     luminosities = np.random.uniform(0.3, 1.0, n_points).astype(np.float32)
