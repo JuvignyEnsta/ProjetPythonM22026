@@ -14,22 +14,24 @@ ones = np.ones(np.shape(c), np.int64)
 # For the code below to work, this initial value must at least be 'loop'.
 # Here it is loop + 5
 color = ones * loop + 5
-z = 0.j
+z = np.zeros_like(c,dtype=np.complex128)
+converged = np.abs(z)<2
 start = time.time()
 for n in range(0,loop):
-      z = z**2 + c
-      diverged = np.abs(z)>2
+      z[converged] = z[converged]**2 + c[converged]
+      diverged = np.abs(z)>=2
+      converged = np.logical_not(diverged)
       # Store value of n at which series was detected to diverge.
       # The later the series is detected to diverge, the higher
       # the 'color' value.
-      color[diverged] = 100*np.minimum(color[diverged], ones[diverged]*n)/loop
+      color[diverged] = np.minimum(color[diverged], ones[diverged]*n)
 end = time.time()
 print(f"Time taken: {end - start} seconds")
 
 plt.rcParams['figure.figsize'] = [12, 7.5]
 # contour plot with real and imaginary parts of c as axes
 # and colored according to 'color'
-plt.contourf(c.real, c.imag, color)
+plt.contourf(c.real, c.imag, np.log(color+1.))
 plt.xlabel("Real($c$)")
 plt.ylabel("Imag($c$)")
 plt.xlim(-2,2)

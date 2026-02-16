@@ -6,7 +6,7 @@ import numba
 @numba.njit(parallel=True)
 def mandelbrot_iter(c_arr : np.ndarray, loop : numba.int64) -> np.ndarray:
     n : numba.int64 = 0
-    color = np.ones(np.shape(c_arr), np.int64) + 5
+    color = loop*np.ones(np.shape(c_arr), np.int64) + 5
     for i in numba.prange(c_arr.shape[0]):
         for j in range(c_arr.shape[1]):
             c0 : numba.complex128 = c_arr[i,j]
@@ -14,7 +14,7 @@ def mandelbrot_iter(c_arr : np.ndarray, loop : numba.int64) -> np.ndarray:
             for n in range(loop):
                 z = z*z + c0
                 if np.abs(z)>2:
-                    color[i,j] = (100*np.minimum(color[i,j], n))/loop
+                    color[i,j] = np.minimum(color[i,j], n)
                     break
     return color
 
@@ -36,7 +36,7 @@ print(f"Time taken: {end - start} seconds")
 plt.rcParams['figure.figsize'] = [12, 7.5]
 # contour plot with real and imaginary parts of c as axes
 # and colored according to 'color'
-plt.contourf(c.real, c.imag, color)
+plt.contourf(c.real, c.imag, np.log(color+1.))
 plt.xlabel("Real($c$)")
 plt.ylabel("Imag($c$)")
 plt.xlim(-2,2)
